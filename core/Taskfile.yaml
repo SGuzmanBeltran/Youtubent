@@ -5,7 +5,7 @@ dotenv: ['.env']
 tasks:
   run:
     cmds:
-      - go run core/cmd/api/main.go
+      - go run cmd/api/main.go
 
   show-env:
     cmds:
