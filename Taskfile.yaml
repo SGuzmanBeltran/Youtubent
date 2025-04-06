@@ -1,0 +1,33 @@
+version: '3'
+
+dotenv: ['.env']
+
+tasks:
+  run:
+    cmds:
+      - go run core/cmd/api/main.go
+
+  show-env:
+    cmds:
+      - echo $GOOSE_MIGRATION_DIR
+
+  create:
+    vars:
+    cmds:
+      - goose create {{.CLI_ARGS}} sql
+
+  status:
+    cmds:
+      - goose status
+    env:
+      GOOSE_DRIVER: "{{.GOOSE_DRIVER}}"
+      GOOSE_DBSTRING: "{{.DB_STRING}}"
+      GOOSE_MIGRATION_DIR: "{{.GOOSE_MIGRATION_DIR}}"
+
+  up:
+    cmds:
+      - goose up
+    env:
+      GOOSE_DRIVER: "{{.GOOSE_DRIVER}}"
+      GOOSE_DBSTRING: "{{.DB_STRING}}"
+      GOOSE_MIGRATION_DIR: "{{.GOOSE_MIGRATION_DIR}}"
