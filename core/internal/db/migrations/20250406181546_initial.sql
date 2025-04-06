@@ -8,6 +8,7 @@ CREATE TABLE video (
     path TEXT NOT NULL,
     duration_seconds INT NOT NULL,
     format TEXT NOT NULL,
+    type TEXT CHECK (type IN ('video', 'audio')) NOT NULL,
     tags TEXT[] DEFAULT '{}',
     views INT DEFAULT 0,
     likes INT DEFAULT 0,
